@@ -64,12 +64,12 @@
                     </span>
                     <input 
                     type="text" 
-                    id="cnpj" 
-                    name="cnpj" 
-                    :value="__('cnpj')"
+                    id="usuario" 
+                    name="usuario" 
+                    :value="__('usuario')"
                     class="form-control border-0 shadow-none"
-                    placeholder="CNPJ" 
-                    aria-label="cnpj da empresa" 
+                    placeholder="Usuário" 
+                    aria-label="usuario da empresa" 
                     aria-describedby="enterprise-addon">
                 </div>
     
@@ -112,7 +112,7 @@
                         <hr width="40%">
                     </div>
                 <div class="d-grid gap-2 col-8 mx-auto">
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-color-two" type="button">CADASTRE-SE</a>
+                    <a href="{{ route('registers') }}" class="btn btn-primary btn-color-two" type="button">Solicitar acesso</a>
                 </div>
                 <!-- Botões -->
                 @if(session('error'))
@@ -124,13 +124,6 @@
         </div>
     </div>
     @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#cnpj').mask('00.000.000/0000-00', { reverse: true });
-        });
-    </script>
     @endsection
     </body>
 </html>

@@ -15,7 +15,7 @@
 
     div#tcontainer {
         overflow-y: scroll;
-        height: 250px;
+        height: 300px;
         overflow-x: auto;
     }
 
@@ -37,7 +37,7 @@
 
     .titulo {
         background-color: #F05A28;
-        width: 700px;
+        width: 670px;
     }
 </style>
 @endsection
@@ -53,8 +53,9 @@
                         <img src="{{ asset('img\config.png') }}" alt="config" class="img-top">
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="{{ route('product') }}">Cadastrar Produto <i class="fa-solid fa-cart-plus"></i></i></a></li>
-                        <li><a class="dropdown-item" href="{{ route('supplier') }}">Cadastrar Fonercedor <i class="fa-solid fa-store"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('agendas') }}">Agendar <i class="fa-solid fa-book"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('residents') }}">Cadastrar Residente <i class="fa-solid fa-person-cane"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('medicines') }}">Cadastrar Medicamento <i class="fa-solid fa-pills"></i></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -69,20 +70,15 @@
 </header>
 
 @section('content')
-<main class="my-0 main-body">
+<main class="mt-3 my-0 main-body">
     <div class="d-flex flex-column align-items-center">
         <div class="form-box ">
-            <!-- Movement -->
-            <div class="m-3 d-grid gap-2 col-8 mx-auto">
-                <a href="{{ route('movement') }}" class="btn btn-primary btn-color-three" type="button">Movimentar</a>
-            </div>
-            <!-- Movement -->
             <!-- Barra de pesquisa -->
             <form action="{{route('home')}}" method="get"
                 class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 span-input">
                 @csrf
                 <input type="text" id="search" name="search" class="form-control shadow-none border-0"
-                    placeholder="Procurar produto">
+                    placeholder="Procurar Residente">
                 <button type="submit" class="btn border-0 p-0">
                     <i class="fa-solid fa-magnifying-glass icon-input"></i>
                 </button>
@@ -98,65 +94,34 @@
             <!-- Barra de pesquisa -->
             <div class="mb-3 d-flex flex-column align-items-center border border-black rounded-4">
                 <div class="d-flex flex-column align-items-center border border-black rounded-top-4 titulo">
-                    <h1>Estoque</h1>
+                    <h1>Agenda</h1>
                 </div>
                 <div class="mb-3 d-flex flex-column align-items-center p-1 table-person" id="tcontainer">
                     <table>
                         <thead>
                             <tr class="table-thead">
-                                <th scope="col" class="text-center border border-black px-5">Produto</th>
-                                <th scope="col" class="text-center border border-black px-5">Marca</th>
-                                <th scope="col" class="text-center border border-black px-5">Quantidade Atual</th>
-                                <th scope="col" class="text-center border border-black px-5">Quantidade Mínima</th>
+                                <th scope="col" class="text-center border border-black px-5">Nome</th>
+                                <th scope="col" class="text-center border border-black px-5">Medicamento</th>
+                                <th scope="col" class="text-center border border-black px-5">Horario</th>
+                                <th scope="col" class="text-center border border-black px-5">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($productsEstoque as $product)
+                            @foreach ($residentQuery as $resident )
                                 <tr>
-                                    <td class="text-center border border-black">{{ $product->nome_produto }}</td>
-                                    <td class="text-center border border-black">{{ $product->marca }}</td>
+                                    <td class="text-center border border-black">{{ $resident ->nome_residente }}</td>
+                                    <td class="text-center border border-black">{{ $resident ->medicamento }}</td>
+                                    <td class="text-center border border-black">{{ $resident ->horario }}</td>
                                     <td class="text-center border border-black">
-                                        {{ $product->total > 0 ? $product->total : '0' }}
+                                        <a href="">
+                                            <i class="fa-solid fa-check "></i>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa-solid fa-arrows-to-eye"></i>
+                                        </a>
                                     </td>
-                                    <td class="text-center border border-black">{{ $product->qtd_minima }}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="mb-3 d-flex flex-column align-items-center border border-black rounded-4">
-                <div class="d-flex flex-column align-items-center border border-black rounded-top-4 titulo">
-                    <h1>Alerta</h1>
-                </div>
-                <div class="mb-3 d-flex flex-column align-items-center p-1 table-person" id="tcontainer">
-                    <table>
-                        <thead>
-                            <tr class="table-thead">
-                                <th scope="col" class="text-center border border-black px-5">Produto</th>
-                                <th scope="col" class="text-center border border-black px-5">Marca</th>
-                                <th scope="col" class="text-center border border-black px-5">Quantidade Atual</th>
-                                <th scope="col" class="text-center border border-black px-5">Quantidade Mínima</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($productsAlerta as $product)
-                                <tr>
-                                    <td class="text-center border border-black">{{ $product->nome_produto }}</td>
-                                    <td class="text-center border border-black">{{ $product->marca }}</td>
-                                    <td class="text-center border border-black">
-                                        {{ $product->total > 0 ? $product->total : '0' }}
-                                    </td>
-                                    <td class="text-center border border-black">{{ $product->qtd_minima }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4" class="text-center border border-black text-primary">
-                                        Quantidade de atual tem 4 ou mais produtos em estoque
-                                    </td>
-                                </tr>
-                            @endforelse
                         </tbody>
                     </table>
                 </div>

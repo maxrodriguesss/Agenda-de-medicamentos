@@ -49,15 +49,9 @@
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0 span-input">
-                        <i class="fa-regular fa-building icon-input"></i>
-                    </span>
-                    <input type="text" id="company_name" name= "company_name" class="form-control border-0 shadow-none" placeholder="Razão social" required>
-                </div>
-                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
-                    <span class="input-group-text border-0 span-input">
                         <i class="fa-solid fa-hashtag icon-input"></i>
                     </span>
-                    <input type="text" id="cnpj" name="cnpj" class="form-control cnpj border-0 shadow-none" placeholder="CNPJ" required>
+                    <input type="text" id="cpf" name="cpf" class="form-control border-0 shadow-none" placeholder="CPF" required>
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0">
@@ -66,22 +60,16 @@
                     <input type="email" id="email" name="email" aria-describedby="emailHelp" class="form-control border-0 shadow-none" placeholder="Email" required>
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
-                    <span class="input-group-text border-0">
-                        <i class="fa-solid fa-key icon-input"></i>
+                    <span class="input-group-text border-0 span-input">
+                        <i class="fa-solid fa-phone icon-input"></i>
                     </span>
-                    <input type="password" id="password" name="password" class="form-control border-0 shadow-none" placeholder="Senha" required>
-                </div>
-                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
-                    <span class="input-group-text border-0">
-                        <i class="fa-solid fa-key icon-input"></i>
-                    </span>
-                    <input type="password" id="repeatpassword" name="repeatpassword" class="form-control border-0 shadow-none" placeholder="Repita a senha" required>
+                    <input type="text" class="form-control border-0 shadow-none" id="phone" name="phone" maxlength="16" placeholder="Telefone">
                 </div>
             </div>
             <!-- Email e senha -->
             <!-- Botões -->
             <div class="d-grid gap-2 col-8 mx-auto">
-                <input type="submit" class="btn btn-primary btn-color-one" value="CADASTRAR">
+                <input type="submit" class="btn btn-primary btn-color-one" value="Solicitar">
             </div>
             <!-- Botões -->
         </div>
@@ -96,7 +84,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#cnpj').mask('00.000.000/0000-00', { reverse: true });
+        $('#cpf').mask('000.000.000-00', { reverse: true });
+        $('#phone').mask('(00) 0 0000-0000');
     });
 </script>
 @endsection
