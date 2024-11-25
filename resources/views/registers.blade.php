@@ -65,6 +65,18 @@
                     </span>
                     <input type="text" class="form-control border-0 shadow-none" id="phone" name="phone" maxlength="16" placeholder="Telefone">
                 </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                    <span class="input-group-text border-0">
+                        <i class="fa-solid fa-key icon-input"></i>
+                    </span>
+                    <input type="password" id="password" name="password" class="form-control border-0 shadow-none" placeholder="Senha" required>
+                </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                    <span class="input-group-text border-0">
+                        <i class="fa-solid fa-key icon-input"></i>
+                    </span>
+                    <input type="password" id="repeatpassword" name="repeatpassword" class="form-control border-0 shadow-none" placeholder="Repita a senha" required>
+                </div>
             </div>
             <!-- Email e senha -->
             <!-- Botões -->
@@ -72,6 +84,17 @@
                 <input type="submit" class="btn btn-primary btn-color-one" value="Solicitar">
             </div>
             <!-- Botões -->
+            @if (session('error'))
+                <div class="m-1 d-flex align-items-center border border-black rounded-4 p-1 alert alert-danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i> {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="m-1 d-flex align-items-center border border-black rounded-4 p-1 alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
     </form>
 </main>

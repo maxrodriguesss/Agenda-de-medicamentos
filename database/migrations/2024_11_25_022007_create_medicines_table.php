@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
+
+            $table->string('nome_medicamento', 512);
+            $table->string('unidade_medida', 512);
+            $table->bigInteger('código')->nullable();
+
             $table->timestamps();
         });
     }

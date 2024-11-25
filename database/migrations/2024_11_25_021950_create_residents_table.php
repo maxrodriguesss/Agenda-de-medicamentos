@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
+
+            $table->string('nome_residente', 512);
+            $table->date('data_nascimento');
+            $table->string('nome_responsavel', 512);
+            $table->string('endereco_responsavel', 512);
+            $table->string('telefone_responsavel', 17);
+            $table->string('observacao', 255)->nullable();
+            $table->string('foto');
+
             $table->timestamps();
         });
     }

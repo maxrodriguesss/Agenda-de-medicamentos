@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('resident_id');
+            $table->unsignedBigInteger('medicine_id');
+            $table->string('unidade_medida', 255);
+            $table->integer('quantidade');
+            $table->integer('frequencia');
+            $table->bigInteger('repeticoes');
+            $table->dateTime('horario');
+
             $table->timestamps();
+
+            // Chaves estrangeiras
+            $table->foreign('resident_id')->references('id')->on('residents')->onDelete('cascade');
+            $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
         });
     }
 

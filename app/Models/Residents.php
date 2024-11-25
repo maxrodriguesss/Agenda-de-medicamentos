@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Residents extends Model
 {
     use HasFactory;
+    protected $table = 'residents';
+
+    protected $fillable = [
+        'id',
+        'nome_residente',
+        'data_nascimento',
+        'endereco_responsavel',
+        'telefone_responsavel',
+        'observacao',
+        'foto',
+        'created_at',
+        'updated_at',
+    ];  
+    public function relAgendas()
+{
+    return $this->hasMany(Agendas::class, 'resident_id');
+}
+
 }
