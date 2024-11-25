@@ -1,0 +1,79 @@
+:root{
+    --fundo: #00030C;
+    --principal: #FFFFFF;
+    --secundario: #C0C0C0;
+    --botao-hover: #167BF7;
+    --botao-efeito-ativo: #800080;
+    --fonte-principal: 'Comic Neue', cursive;
+}
+
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: var(--fonte-principal);
+}
+
+/* INDEX */
+.icon-input{
+    font-size: 23px;
+}
+
+
+.conexao{
+    font-size: 12px;
+}
+/* INDEX */
+
+.main-body {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    width: 300px;
+    height: auto;
+}
+
+.icon-add{
+    font-size: 23px;
+    cursor: pointer;
+    
+}
+
+/* FOOTER */
+.rodape{
+    text-align: center;
+    background-color:  var(--fundo);
+}
+
+.rodape__lista{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em;
+    
+}
+
+.lista__link a{
+    color: var(--principal);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.rodape__texto{
+    font-size: 14px;
+    color: var(--secundario);
+}
+
+.lista__link a:hover{
+    color: var(--botao-hover);
+}
+
+.lista__link a:active{
+    color: var(--botao-efeito-ativo);
+}
+/* FOOTER */
