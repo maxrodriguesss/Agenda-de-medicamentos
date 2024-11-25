@@ -18,12 +18,14 @@ class LoginsController extends Controller
         return view("index");
     }
     public function home(){
+      
         $search = request('search');
 
-        $residentQuery = $this->objAgenda->query();
-        
-        $residentQuery->where('nome_resident', 'like', '%' . $search . '%');
 
-        return view("home", compact('search', 'residentQuery'));
+        $residents = Residents::query()
+            ->where('nome_residente', 'like', '%' . $search . '%')
+            ->get();
+
+        return view("home", compact('search', 'residents'));
     }
 }

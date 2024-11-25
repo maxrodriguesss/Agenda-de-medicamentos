@@ -53,9 +53,12 @@
                         <img src="{{ asset('img\config.png') }}" alt="config" class="img-top">
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="{{ route('agendas') }}">Agendar <i class="fa-solid fa-book"></i></a></li>
-                        <li><a class="dropdown-item" href="{{ route('residents') }}">Cadastrar Residente <i class="fa-solid fa-person-cane"></i></a></li>
-                        <li><a class="dropdown-item" href="{{ route('medicines') }}">Cadastrar Medicamento <i class="fa-solid fa-pills"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('agendas') }}">Agendar <i
+                                    class="fa-solid fa-book"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('residents') }}">Cadastrar Residente <i
+                                    class="fa-solid fa-person-cane"></i></a></li>
+                        <li><a class="dropdown-item" href="{{ route('medicines') }}">Cadastrar Medicamento <i
+                                    class="fa-solid fa-pills"></i></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -107,17 +110,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($residentQuery as $resident )
+                            @foreach ($residents as $resident)
                                 <tr>
-                                    <td class="text-center border border-black">{{ $resident ->nome_residente }}</td>
-                                    <td class="text-center border border-black">{{ $resident ->medicamento }}</td>
-                                    <td class="text-center border border-black">{{ $resident ->horario }}</td>
-                                    <td class="text-center border border-black">
+                                    <td class="text-center border border-black">{{ $resident->resident_id }}</td>
+                                    <td class="text-center border border-black">{{ $resident->medicines_id }}</td>
+                                    <td class="text-center border border-black">{{ $resident->horario }}</td>
+                                    <td class="text-center border border-black grid gap-0 column-gap-3">
                                         <a href="">
-                                            <i class="fa-solid fa-check "></i>
+                                            <i class="fa-solid fa-arrows-to-eye p-2 g-col-6"></i>
                                         </a>
                                         <a href="">
-                                            <i class="fa-solid fa-arrows-to-eye"></i>
+                                            <i class="fa-solid fa-check p-2 g-col-6"></i>
                                         </a>
                                     </td>
                                 </tr>
