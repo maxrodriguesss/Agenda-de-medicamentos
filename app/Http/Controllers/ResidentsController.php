@@ -16,7 +16,7 @@ class ResidentsController extends Controller
     }
     public function submitResidents(Request $request){
         
-        $filePath = $request->file('formFile')->store('uploads/residents', 'public');
+        $filePath = $request->file('formFile')->store('storage/uploads/residents', 'public');
 
         $cadResident = $this->objResidents->create([
             'nome_residente' => $request-> all_name,
