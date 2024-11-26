@@ -5,7 +5,7 @@
 @section('css')
 <style>
     .main-body {
-        height: 76vh;
+        height: 90vh;
     }
     input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
@@ -26,7 +26,7 @@
             <div class="row">
                 <a href="{{ route('index') }}" class="col-4 text-start"><img src="{{ asset('img/voltar.png') }}"
                         class="img-top"></a>
-                <h3 class="col-4 text-center pt-2">Cadastro medicamentos</h3>
+                <h3 class="col-4 text-center pt-2">Cadastro residentes</h3>
                 <a class="col-4 text-end" href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}"
                         class="logo-top" alt="Logo da MaxControl"></a>
             </div>
@@ -36,44 +36,57 @@
 
 @section('content')
 <main class="my-0 main-body">
-    <form id="formMedicines" name="formMedicines" action="{{route('medicines.submit')}}" method="POST">
+    <form id="formResidents" name="formResidents" action="{{route('residents.submit')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="d-flex flex-column align-items-center">
             <div class="form-box p-3">
                 <!-- Formulario -->
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0 span-input">
-                    <i class="fa-solid fa-pills icon-input"></i>
+                        <i class="fa-solid fa-signature icon-input"></i>
                     </span>
-                    <input type="text" id="medicine_name" name= "medicine_name" class="form-control border-0 shadow-none" placeholder="Nome do medicamento" required>
+                    <input type="text" id="all_name" name= "all_name" class="form-control border-0 shadow-none" placeholder="Nome completo" required>
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0 span-input">
-                        <i class="fa-solid fa-scale-unbalanced-flip icon-input"></i>
+                    <i class="fa-solid fa-cake-candles icon-input" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="left" title="Data de nascimento"></i>
                     </span>
-                    <select id="unit_measurement" name='unit_measurement' class="form-control shadow-none border-0" required>
-                        <option selected style="display: none" value="" disabled="disabled">Unidade de medida
-                        </option>
-                        <option value="mg">Miligramas (mg)</option>
-                        <option value="g">Gramas (g)</option>
-                        <option value="mcg">Microgramas (mcg)</option>
-                        <option value="ml">Mililitros (ml)</option>
-                        <option value="l">Litros (L)</option>
-                        <option value="mg/ml">Miligramas por Mililitro (mg/ml)</option>
-                        <option value="UI">Unidades Internacionais (UI)</option>
-                        <option value="mEq">Mili-equivalentes (mEq)</option>
-                        <option value="gotas">Gotas (gotas)</option>
-                        <option value="mg/kg">Miligramas por peso corporal (mg/kg)</option>
-                        <option value="mcg/kg">Microgramas por peso corporal (mcg/kg)</option>
-                    </select>
+                    <input type="date" id="birth_date" name="birth_date" class="form-control border-0 shadow-none">
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
-                    <span class="input-group-text border-0">
-                        <i class="fa-solid fa-barcode"></i>
+                    <span class="input-group-text border-0 span-input">
+                        <i class="fa-solid fa-signature icon-input"></i>
                     </span>
-                    <input type="number" id="code" name="code" class="form-control border-0 shadow-none" placeholder="Código" required>
+                    <input type="text" id="person_responsible" name= "person_responsible" class="form-control border-0 shadow-none" placeholder="Responsavel" required>
                 </div>
-            </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                    <span class="input-group-text border-0 span-input">
+                        <i class="fa-solid fa-map-location-dot icon-input"></i>
+                    </span>
+                    <textarea type="text" id="adress" name="adress" class="form-control border-0 shadow-none"
+                        placeholder="Endereço do responsavel"></textarea>
+                </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                    <span class="input-group-text border-0 span-input">
+                        <i class="fa-solid fa-phone icon-input"></i>
+                    </span>
+                    <input type="text" class="form-control border-0 shadow-none" id="phone" name="phone" maxlength="16" placeholder="Telefone">
+                </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                    <span class="input-group-text border-0 span-input">
+                        <i class="fa-solid fa-hashtag icon-input"></i>
+                    </span>
+                    <textarea type="text" id="obs" name="obs" class="form-control border-0 shadow-none"
+                        placeholder="Observação"></textarea>
+                </div>
+                <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
+                <span class="input-group-text border-0 span-input">
+                    <i class="fa-solid fa-file-image icon-input" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="left" title="Foto do residente"></i>
+                    </span>
+                    <input class="form-control" type="file" id="formFile" name="formFile" required>
+                </div>
             <!-- Formulario-->
             <!-- Botões -->
             <div class="d-grid gap-2 col-8 mx-auto">
@@ -99,4 +112,14 @@
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#phone').mask('(00) 0 0000-0000');
+
+            const tooltipList = [...clone.querySelectorAll('[data-bs-toggle="tooltip"]')];
+            tooltipList.forEach(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        });
+    </script>
 @endsection

@@ -14,6 +14,7 @@ class Residents extends Model
         'id',
         'nome_residente',
         'data_nascimento',
+        'nome_responsavel',
         'endereco_responsavel',
         'telefone_responsavel',
         'observacao',
