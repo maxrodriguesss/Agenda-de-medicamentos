@@ -19,6 +19,8 @@ use App\Http\Controllers\ResidentsController;
 */
 
 Route::get('/home', [LoginsController::class, 'home'])->name('home'); // Página principal
+Route::get('/home/{id}', [LoginsController::class, 'show'])->name('home.show');
+
 
 Route::get('/',                 [LoginsController::class, 'index'])->            name('index'); // Página inicial
 Route::post('/submitIndex',     [LoginsController::class, 'submitIndex'])->      name('index.submit'); // Envio do formulário de login

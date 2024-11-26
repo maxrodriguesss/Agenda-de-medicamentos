@@ -51,7 +51,7 @@
                 <!-- Formulario -->
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0 span-input">
-                        <i class="fa-regular fa-building icon-input"></i>
+                        <i class="fa-solid fa-hands-holding-child icon-input"></i>
                     </span>
                     <select id="resident_name" name='resident_name' class="form-control shadow-none border-0">
                         <option value="" disabled selected hidden>Nome do residente</option>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="mb-3 d-flex align-items-center border border-black rounded-4 p-1 form-group span-input">
                     <span class="input-group-text border-0 span-input">
-                        <i class="fa-regular fa-building icon-input"></i>
+                        <i class="fa-solid fa-tablets icon-input"></i>
                     </span>
                     <select id="medicine_name" name='medicine_name' class="form-control shadow-none border-0">
                         <option value="" disabled selected hidden>Medicamento

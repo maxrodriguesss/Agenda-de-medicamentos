@@ -8,24 +8,58 @@ use App\Models\Residents;
 
 class LoginsController extends Controller
 {
-    private $objAgenda;
+    private $objAgendas;
 
-    public function __construct(){
-        $this->objAgenda = new Agendas();
+    public function __construct()
+    {
+        $this->objAgendas = new Agendas();
     }
 
-    public function index(){
+    public function index()
+    {
         return view("index");
     }
-    public function home(){
-      
-        $search = request('search');
+    public function submitIndex(Request $request){
+        // $credentials = $request->only('email','password');
+        // $authenticated = Auth::attempt($credentials);
+        // if($authenticated){
+        //     $request->session()->regenerate();
+        //     return view('home');
+        // }
+        return redirect('home');
+    }
 
+
+    public function home()
+    {
+
+        $search = request('search');
+    
 
         $residents = Residents::query()
             ->where('nome_residente', 'like', '%' . $search . '%')
             ->get();
+    
 
-        return view("home", compact('search', 'residents'));
+        $agendas = Agendas::with(['relResident', 'relMedicine'])
+            ->whereHas('relResident', function ($query) use ($search) {
+                $query->where('nome_residente', 'like', '%' . $search . '%');
+            })
+            ->orderBy('horario', 'asc')
+            ->get();
+    
+        
+        return view("home", compact('search', 'residents', 'agendas'));
     }
+    public function show($id)
+    {
+        $agenda = Agendas::with(['relResident', 'relMedicine'])->find($id);
+    
+        if (!$agenda) {
+            return redirect()->route('home')->with('error', 'Agenda não encontrada.');
+        }
+    
+        return view('show', compact('agenda'));
+    }
+     
 }

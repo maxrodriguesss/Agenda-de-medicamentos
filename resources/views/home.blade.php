@@ -110,17 +110,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($residents as $resident)
+                            @foreach($agendas as $agenda)
                                 <tr>
-                                    <td class="text-center border border-black">{{ $resident->resident_id }}</td>
-                                    <td class="text-center border border-black">{{ $resident->medicines_id }}</td>
-                                    <td class="text-center border border-black">{{ $resident->horario }}</td>
-                                    <td class="text-center border border-black grid gap-0 column-gap-3">
-                                        <a href="">
-                                            <i class="fa-solid fa-arrows-to-eye p-2 g-col-6"></i>
+                                    <td class="text-center border border-black">
+                                        {{ $agenda->relResident->nome_residente ?? 'N/A' }}
+                                    </td>
+                                    <td class="text-center border border-end-0 border-black">
+                                        {{ $agenda->relMedicine->nome_medicamento ?? 'N/A' }}
+                                        {{ $agenda->quantidade }}
+                                        {{ $agenda->relMedicine->unidade_medida ?? 'N/A' }}
+                                    </td>
+                                    <td class="text-center border border-black">
+                                        {{ $agenda->horario }}
+                                    </td>
+                                    <td class="text-center border border-black gap-0 column-gap-3">
+                                        <a href="{{ route('home.show', $agenda->id) }}" class="d-inline-block">
+                                            <i class="fa-solid fa-eye p-2 g-col-6 text-black"></i>
                                         </a>
                                         <a href="">
-                                            <i class="fa-solid fa-check p-2 g-col-6"></i>
+                                            <i class="fa-solid fa-check p-2 g-col-6 text-success"></i>
                                         </a>
                                     </td>
                                 </tr>
