@@ -51,15 +51,5 @@ class LoginsController extends Controller
         
         return view("home", compact('search', 'residents', 'agendas'));
     }
-    public function show($id)
-    {
-        $agenda = Agendas::with(['relResident', 'relMedicine'])->find($id);
-    
-        if (!$agenda) {
-            return redirect()->route('home')->with('error', 'Agenda não encontrada.');
-        }
-    
-        return view('show', compact('agenda'));
-    }
      
 }

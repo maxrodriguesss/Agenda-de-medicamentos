@@ -124,10 +124,13 @@
                                         {{ $agenda->horario }}
                                     </td>
                                     <td class="text-center border border-black gap-0 column-gap-3">
-                                        <a href="{{ route('home.show', $agenda->id) }}" class="d-inline-block">
+                                        <a href="{{ route('agendas.show', $agenda->id) }}" class="d-inline-block">
                                             <i class="fa-solid fa-eye p-2 g-col-6 text-black"></i>
                                         </a>
-                                        <a href="">
+                                        <a href="{{ route('agendas.edit', $agenda->id) }}" class="d-inline-block">
+                                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                                        </a>
+                                        <a href="" class="d-inline-block">
                                             <i class="fa-solid fa-check p-2 g-col-6 text-success"></i>
                                         </a>
                                     </td>
