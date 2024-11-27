@@ -130,7 +130,7 @@
                                         <a href="{{ route('agendas.edit', $agenda->id) }}" class="d-inline-block">
                                             <i class="fa-solid fa-pen-to-square text-warning"></i>
                                         </a>
-                                        <a href="" class="d-inline-block">
+                                        <a href="#" class="d-inline-block" onclick="removeRow(this)">
                                             <i class="fa-solid fa-check p-2 g-col-6 text-success"></i>
                                         </a>
                                     </td>

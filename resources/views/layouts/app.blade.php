@@ -88,7 +88,7 @@
             border: none;
         }
 
-        .btn-color-three{
+        .btn-color-three {
             background-color: #F05A28;
             border: none;
         }
@@ -100,9 +100,10 @@
         .light-letter {
             color: white;
         }
-        .icon-input{
+
+        .icon-input {
             font-size: 23px;
-            color:black;
+            color: black;
             background-color: transparent;
         }
     </style>
@@ -149,6 +150,14 @@
     <script src="{{ asset('tagsinput/tagsinput4.js') }}"></script>
     <script src="{{ asset('validateJs/validate.js') }}"></script>
     <script src="{{ asset('validateJs/validate_pt-BR.js') }}"></script>
+    <script>function removeRow(element) {
+            // Encontra o elemento pai <tr> da linha onde o ícone foi clicado
+            var row = element.closest('tr');
+
+            // Remove a linha da tabela
+            row.remove();
+        }
+    </script>
     @yield('js')
 </body>
 
